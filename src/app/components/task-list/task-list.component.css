@@ -1,0 +1,136 @@
+/* Task List container */
+.task-list-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.no-tasks-message {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+/* Task List table */
+.task-list {
+  width: 100%;
+  max-width: 900px;
+}
+
+.task-table {
+  border-collapse: collapse;
+  max-width: 900px;
+  width: 100%;
+}
+
+.task-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.task-table th,
+.task-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.task-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.task-table tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.task-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.task-table tbody tr:hover {
+  background-color: beige;
+}
+
+.completed {
+  color: #009879;
+  font-weight: 800;
+}
+
+/* Action buttons */
+.action-button {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 0 6px 0 0;
+  min-width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+.action-button.complete {
+  background-color: #03614e;
+}
+
+.action-button.reopen {
+  background-color: #007bff;
+}
+
+.action-anchor {
+  margin: 0 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #03614e;
+  transition: color 0.3s ease;
+}
+
+.action-anchor:hover {
+  color: #282c34;
+}
+
+@media screen and (max-width: 600px) {
+  tbody {
+    border-top: 2px solid #009879;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  .task-table td {
+    padding-left: 30%;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 25%;
+    text-align: left;
+    font-weight: bold;
+  }
+}
