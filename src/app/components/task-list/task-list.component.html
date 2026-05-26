@@ -1,0 +1,47 @@
+<div class="task-list-container">
+  <div *ngIf="(taskList$ | async) as tasks">
+    <p *ngIf="tasks.length === 0" class="no-tasks-message">
+      There are no available tasks at this time.
+    </p>
+    <div *ngIf="tasks.length > 0" class="task-list">
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Completed</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks" [key]="task.id">
+            <td data-label="Description">{{ task.description }}</td>
+            <td data-label="Due Date">{{ task.dueDate }}</td>
+            <td data-label="Completed">
+              <span *ngIf="task.completed" class="completed">Yes</span>
+              <span *ngIf="!task.completed">No</span>
+            </td>
+            <td data-label="Action">
+              <button
+                *ngIf="!task.completed"
+                class="action-button complete"
+                (click)="onCompleteTask(task.id)"
+              >
+                Complete
+              </button>
+              <button
+                *ngIf="task.completed"
+                class="action-button reopen"
+                (click)="onReopen(task.id)"
+              >
+                Reopen
+              </button>
+              <a class="action-anchor" (click)="onEdit(task)">Edit</a>
+              <a class="action-anchor" (click)="onRemoveTask(task.id)">Remove</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
