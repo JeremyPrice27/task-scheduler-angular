@@ -1,0 +1,28 @@
+<div class="App">
+  <header class="App-header">
+    <h1 class="main-heading">Task Scheduling <span>🗓️</span></h1>
+    <p>Schedule tasks to be completed.</p>
+  </header>
+  <main class="main-section">
+    <div class="task-description">
+      <p>A Task Scheduling application built by Jeremy Price to demonstrate skills in Angular, NgRx and Angular Reactive Forms.</p>
+      <p>See the <a target="_blank" href="https://github.com/JeremyPrice27/task-scheduler-angular">Repository</a> to view the code.</p>
+    </div>
+    <ng-container *ngIf="!addTask">
+      <app-task-list 
+        [scrollTop]="scrollTop.bind(this)" 
+        (onAddTask)="onAddTask($event)"
+        (onTaskEdit)="onTaskEdit($event)">
+      </app-task-list>
+      <div class="task-row">
+        <button class="task-button" (click)="onAddTask($event)">Add Task</button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="addTask">
+      <app-task-form 
+        [currentTask]="currentTask"
+        (onClose)="onTaskFormClose()">
+      </app-task-form>
+    </ng-container>
+  </main>
+</div>
